@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+        body {
+            font-family: 'Newsreader', serif;
+            background-color: #f2ead3;
+            color: #2b2b2b;
+        }
+        .gold-text {
+            color: #C5A02E;
+        }
+        .gold-border {
+            border-color: #C5A02E;
+        }
+        .text-shadow-gold {
+             text-shadow: 0 1px 2px rgba(197, 160, 46, 0.2);
+        }
+   

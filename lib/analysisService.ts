@@ -1,7 +1,21 @@
 
 import { GoogleGenAI, Type } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Provide a local declaration so TypeScript recognizes Vite's import.meta.env
+declare global {
+  interface ImportMetaEnv {
+    readonly VITE_GEMINI_API_KEY: string;
+  }
+
+  interface ImportMeta {
+    readonly env: ImportMetaEnv;
+  }
+}
+
+export {};
+
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+const ai = new GoogleGenAI({ apiKey });
 
 export async function analyzeFragrance(ingredients: string) {
   const response = await ai.models.generateContent({
@@ -89,5 +103,6 @@ export async function analyzeFragrance(ingredients: string) {
     }
   });
 
-  return JSON.parse(response.text);
+  // response.text may be undefined according to typings — default to empty object JSON
+  return JSON.parse(response.text ?? '{}');
 }
