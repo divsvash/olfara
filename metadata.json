@@ -1,0 +1,7 @@
+{
+  "name": "OLFÄRA — Decode What You Wear",
+  "description": "AI-powered fragrance ingredient intelligence and transparency platform. Redefining luxury fragrance through molecular insight.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
