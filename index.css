@@ -1,18 +1,315 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-        body {
-            font-family: 'Newsreader', serif;
-            background-color: #f2ead3;
-            color: #2b2b2b;
-        }
-        .gold-text {
-            color: #C5A02E;
-        }
-        .gold-border {
-            border-color: #C5A02E;
-        }
-        .text-shadow-gold {
-             text-shadow: 0 1px 2px rgba(197, 160, 46, 0.2);
-        }
-   
+
+/* ------------------------------
+   GLOBAL STYLING
+------------------------------ */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Newsreader', serif;
+    background-color: #f2ead3;
+    color: #2b2b2b;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ------------------------------
+   CINEMATIC GRAIN TEXTURE
+------------------------------ */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+
+    opacity: 0.03;
+
+    background-image:
+        url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+}
+
+/* ------------------------------
+   GOLD SYSTEM
+------------------------------ */
+
+.gold-text {
+    color: #C5A02E;
+}
+
+.gold-border {
+    border-color: #C5A02E;
+}
+
+.text-shadow-gold {
+    text-shadow: 0 1px 2px rgba(197, 160, 46, 0.2);
+}
+
+/* ------------------------------
+   LUXURY TYPOGRAPHY
+------------------------------ */
+
+.luxury-heading {
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+}
+
+.editorial-text {
+    font-family: 'Newsreader', serif;
+    line-height: 1.7;
+}
+
+/* ------------------------------
+   CINEMATIC FADE ANIMATION
+------------------------------ */
+
+@keyframes luxuryFade {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-luxury {
+    animation: luxuryFade 1.2s ease forwards;
+}
+
+/* ------------------------------
+   GRADIENT MOTION
+------------------------------ */
+
+@keyframes luxuryGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* ------------------------------
+   FLOATING GRADIENT ORBS
+------------------------------ */
+
+.gradient-orb {
+    position: absolute;
+    border-radius: 9999px;
+
+    filter: blur(120px);
+
+    opacity: 0.14;
+
+    background:
+        linear-gradient(
+            135deg,
+            #C5A02E,
+            #f5deb3,
+            #e6c96a
+        );
+
+    background-size: 400% 400%;
+
+    animation: luxuryGradient 16s ease infinite;
+}
+
+/* ------------------------------
+   GLASSMORPHISM CARDS
+------------------------------ */
+
+.luxury-card {
+    position: relative;
+
+    backdrop-filter: blur(20px);
+
+    background:
+        rgba(255,255,255,0.35);
+
+    border:
+        1px solid rgba(197,160,46,0.12);
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,0.06),
+        inset 0 1px 1px rgba(255,255,255,0.35);
+
+    transition:
+        transform 0.6s ease,
+        box-shadow 0.6s ease,
+        border 0.6s ease;
+}
+
+/* Hover behavior */
+
+.luxury-card:hover {
+    transform: translateY(-6px);
+
+    border:
+        1px solid rgba(197,160,46,0.25);
+
+    box-shadow:
+        0 20px 60px rgba(197,160,46,0.12),
+        inset 0 1px 1px rgba(255,255,255,0.4);
+}
+
+/* ------------------------------
+   GOLD DIVIDERS
+------------------------------ */
+
+.gold-divider {
+    width: 100%;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            to right,
+            transparent,
+            rgba(197,160,46,0.4),
+            transparent
+        );
+}
+
+/* ------------------------------
+   PREMIUM BUTTONS
+------------------------------ */
+
+.luxury-button {
+    position: relative;
+
+    padding: 14px 30px;
+
+    border-radius: 999px;
+
+    border:
+        1px solid rgba(197,160,46,0.25);
+
+    background:
+        rgba(255,255,255,0.18);
+
+    backdrop-filter: blur(12px);
+
+    color: #b38c1d;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.18em;
+
+    font-size: 0.75rem;
+
+    transition: all 0.5s ease;
+
+    overflow: hidden;
+}
+
+.luxury-button:hover {
+    background: #C5A02E;
+
+    color: #111;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 40px rgba(197,160,46,0.25);
+}
+
+/* ------------------------------
+   IMAGE HOVER SYSTEM
+------------------------------ */
+
+.cinematic-image {
+    transition:
+        transform 0.8s ease,
+        filter 0.8s ease;
+}
+
+.cinematic-image:hover {
+    transform: scale(1.03);
+
+    filter: brightness(1.03);
+}
+
+/* ------------------------------
+   SCROLL REVEAL HELPERS
+------------------------------ */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ------------------------------
+   LUXURY SHADOW SYSTEM
+------------------------------ */
+
+.soft-shadow {
+    box-shadow:
+        0 10px 40px rgba(0,0,0,0.05);
+}
+
+/* ------------------------------
+   ULTRA THIN BORDERS
+------------------------------ */
+
+.luxury-border {
+    border:
+        1px solid rgba(197,160,46,0.14);
+}
+
+/* ------------------------------
+   PREMIUM INPUTS
+------------------------------ */
+
+.luxury-input {
+    background:
+        rgba(255,255,255,0.35);
+
+    border:
+        1px solid rgba(197,160,46,0.15);
+
+    backdrop-filter: blur(10px);
+
+    transition: all 0.4s ease;
+}
+
+.luxury-input:focus {
+    outline: none;
+
+    border:
+        1px solid rgba(197,160,46,0.35);
+
+    box-shadow:
+        0 0 20px rgba(197,160,46,0.08);
+}
+
+/* ------------------------------
+   SMOOTH SECTION SPACING
+------------------------------ */
+
+.section-spacing {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+}
